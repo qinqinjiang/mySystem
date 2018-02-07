@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.mapper.UserMapper">
+	<resultMap id="userMap" type="User">
+		<id property="id" column="id" javaType="int" />
+		<result property="username" column="username" javaType="java.lang.String" />
+		<result property="password" column="password" javaType="java.lang.String" />
+		<result property="email" column="email" javaType="java.lang.String" />
+	</resultMap>
+	
+	<select id="getUserByName" parameterType="java.lang.String" resultMap="userMap">
+		select * from user where username=#{username};
+	</select>
+</mapper>
