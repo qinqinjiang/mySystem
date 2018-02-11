@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+   "http://struts.apache.org/dtds/struts-2.0.dtd"> 
+	<struts>
+		<!-- 上传文件参数 -->
+        <constant name="struts.devMode" value="true" />
+   		<constant name="struts.multipart.maxSize" value="1000000" />
+   		
+        <package name="default" namespace="/" extends="struts-default">
+        <!-- 注册自定义拦截器 -->
+        <interceptors>
+        	<interceptor name="myInterceptor" class="struts2.com.interceptor.MyInterceptor" />
+        </interceptors>
+        
+        <action name="index2">
+        	<result>
+        		/index.jsp
+        	</result>
+        </action>
+        
+        <action name="helloworld" class="struts2.com.wode.TestAction">
+        	<interceptor-ref name="params" />
+        	<!-- 调用自定义拦截器 -->
+        	<interceptor-ref name="myInterceptor" />
+            <result name="success">
+            	/result.jsp
+            </result>
+            
+           <!-- freeMarker -->
+           <!--<result name="success" type="freemarker">
+            	<param name="location">hello.fm</param>
+            </result> -->
+        </action>
+        
+        <!-- 文件上传 -->
+        <action name="fileUpload" class="struts2.com.wode.FileUpload">
+        	<result name="success">
+        		/result.jsp
+        	</result>
+        	<result name="error">
+        		/error.jsp
+        	</result>
+        </action>
+        
+        <!-- 连接数据库 -->
+        <action name="login" class="struts2.com.wode.ConnectDataBase">
+        	<result name="success">/loginSuccess.jsp</result>
+        	<result name="error">/error.jsp</result>
+        </action>
+        
+        <!-- 邮件发送 -->
+        <action name="sendMail" class="struts2.com.wode.Emailer" method="execute">
+        	<result name="success">/result.jsp</result>
+        </action>
+        
+        <!-- struts2验证 -->
+        <action name="invalidate" class="struts2.com.wode.Employee">
+        	<result name="input">/invalidate.jsp</result>
+        	<result name="success">/result.jsp</result>
+        </action>
+        
+        <!-- 类型转换 -->
+        <action name="system" class="struts2.com.converter.SystemDetail">
+        	<result name="success">/converterResult.jsp</result>
+        </action>
+        </package>
+    </struts>
