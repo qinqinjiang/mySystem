@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.shiro.shirodemo.ShirodemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.676 s - in com.shiro.shirodemo.ShirodemoApplicationTests
