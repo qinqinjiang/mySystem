@@ -1,0 +1,12 @@
+server:
+  port: 8018
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+      - id: provider
+        uri: http://localhost:8011/test
+        predicates:
+        - Path=/provider/**
